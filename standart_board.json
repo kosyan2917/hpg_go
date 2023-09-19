@@ -1,0 +1,155 @@
+{
+  "fields" :[
+    {
+      "name": "Разогревочная",
+      "low": 2,
+      "high": 7,
+      "tags": [
+        "Shooter"
+      ],
+      "image": "2.png",
+      "points": 1,
+      "id": 2
+    },
+    {
+      "name": "Движ",
+      "low": 5,
+      "high": 10,
+      "tags": [
+        "Action"
+      ],
+      "image": "3.png",
+      "points": 1,
+      "id": 3
+    },
+    {
+      "name": "Кчау",
+      "low": 3,
+      "high": 100,
+      "tags": [
+        "Racing"
+      ],
+      "image": "4.png",
+      "points": 1,
+      "id": 4
+    },
+    {
+      "name": "Ахуй 1",
+      "low": 4,
+      "high": 8,
+      "tags": [
+        "Anime",
+        "Indie",
+        "Puzzle",
+        "Rogue-like"
+      ],
+      "image": "5.png",
+      "points": 1,
+      "id": 5
+    },
+    {
+      "name": "На чилле, на расслабоне",
+      "low": 0,
+      "high": 300,
+      "tags": [
+        "Casual"
+      ],
+      "image": "6.png",
+      "points": 1,
+      "id": 6
+    },
+    {
+      "name": "Удар Макаки 4",
+      "games": ["helltaker", "plants vs zombies", "metal: hellsinger",
+      "portal", "ruiner", "firewatch", "limbo", "superhot","stray"
+      "journey", "VVVVVV", "The Pedestrain"],
+      "image": "7.png",
+      "points": 1,
+      "id": 7
+    }
+    {
+      "name": "Для умов выше среднего",
+      "low": 4,
+      "high": 8,
+      "tags": [
+        "Point & Click", "Point-and-click"
+      ],
+      "image": "8.png",
+      "points": 1,
+      "id": 8
+    },
+    {
+      "name": "Привет, люстры",
+      "low": 2,
+      "high": 9,
+      "tags": [
+        "Platformer", "3D Platformer"
+      ],
+      "image": "9.png",
+      "points": 2,
+      "id": 9
+    },
+    {
+      "name": "Срать вечно",
+      "low": 5,
+      "high": 13,
+      "tags": [
+        "Psychological Horror"
+      ],
+      "image": "10.png",
+      "points": 2,
+      "id": 10
+    },
+    {
+      "name": "Защита диплома",
+      "low": 3,
+      "high": 10,
+      "tags": [
+        "Tower Defence"
+      ],
+      "image": "11.png",
+      "points": 2,
+      "id": 11
+    },
+    {
+      "name": "Ахуй 2",
+      "low": 4,
+      "high": 10,
+      "tags": [
+        "RPG", "JRPG", "1980s", "1990's"
+      ],
+      "image": "12.png",
+      "points": 2,
+      "id": 12
+    },
+    {
+      "name": "Библиотека",
+      "condition": "Игры из библиотеки steam",
+      "image": "13.png",
+      "points": 2,
+      "id": 13
+    },
+    {
+      "name": "Я тут притаился",
+      "low": 7,
+      "high": 300,
+      "tags": [
+        "Stealth"
+      ],
+      "image": "14.png",
+      "points": 2,
+      "id": 14
+    },
+    {
+      "name": "Заблудэльный",
+      "low": 2,
+      "high": 8,
+      "tags": [
+        "Metroidvania"
+      ],
+      "image": "15.png",
+      "points": 2,
+      "id": 15
+    }
+  ]
+}
