@@ -1,18 +1,21 @@
 package models
 
+import "go.mongodb.org/mongo-driver/bson/primitive"
+
 type board struct {
-	Title  string  `json:"title"`
-	Fields []field `json:"fields"`
+	Title  string  `bson:"title"`
+	Fields []field `bson:"fields"`
 }
 
 type field struct {
-	Name     string   `json:"name"`
-	Low      int      `json:"low"`
-	High     int      `json:"high"`
-	Tags     []string `json:"tags"`
-	ImageUrl string   `json:"image_url"`
-	Points   int      `json:"points"`
-	Id       int      `json:"id"`
-	Games    []string `json:"games"`
-	Rating   int      `json:"r ating"`
+	ID       primitive.ObjectID `bson:"_id"`
+	Name     string             `bson:"name"`
+	Low      int                `bson:"low"`
+	High     int                `bson:"high"`
+	Tags     []string           `bson:"tags"`
+	ImageUrl string             `bson:"image"`
+	Points   int                `bson:"points"`
+	Id       int                `bson:"id"`
+	Games    []string           `bson:"games"`
+	Rating   int                `bson:"rating"`
 }
