@@ -1,18 +1,17 @@
 package serializers
 
 import (
+	"fmt"
 	"go.mongodb.org/mongo-driver/bson"
-	"hpg_backend_go/services/db_client"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
-func Serialize() (bson.M, error) {
-	client, err := db_client.CreateClient()
-	if err != nil {
-		panic(err)
-	}
+func BoardSerializer(client *mongo.Client) (bson.M, error) {
+
 	filter := bson.D{{"title", "Standart board"}}
 	var board bson.M
-	err = client.Database("hpg").Collection("boards").FindOne(nil, filter).Decode(&board)
+	err := client.Database("hpg").Collection("boards").FindOne(nil, filter).Decode(&board)
+	fmt.Println(board)
 	if err != nil {
 		panic(err)
 	}

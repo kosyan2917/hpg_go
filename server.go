@@ -3,11 +3,16 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"hpg_backend_go/handlers"
+	"hpg_backend_go/services/db_client"
 )
 
 func main() {
 	srv := gin.Default()
 	srv.Use(CORSMiddleware())
+	client, err := db_client.CreateClient()
+	if err != nil {
+		panic(err)
+	}
 	srv.Static("/media", "./media")
 	srv.GET("/board", handlers.Board)
 	srv.Run(":8080")
