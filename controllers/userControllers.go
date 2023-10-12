@@ -15,6 +15,23 @@ import (
 	"time"
 )
 
+type Tokens struct {
+	Token        string `json:"token"`
+	RefreshToken string `json:"refresh_token"`
+}
+
+type ForMe struct {
+	Username string          `json:"username"`
+	Avatar   *string         `json:"avatar"`
+	Color    string          `json:"color"`
+	Items    []models.Item   `json:"items"`
+	Effects  []models.Effect `json:"effects"`
+}
+
+type Color struct {
+	Color string `json:"color"`
+}
+
 var validate = validator.New()
 var userCollection = db_client.CreateClient().Client.Database("hpg").Collection("users")
 
@@ -57,22 +74,26 @@ func Signup() gin.HandlerFunc {
 
 		user.ID = primitive.NewObjectID()
 		user.Role = "PLAYER"
+		user.Position = 1
 		token, refreshToken, _ := helper.GenerateToken(user.Email, user.Username, user.ID.Hex(), user.Role)
 		user.Token = &token
+		user.Color = "#000000"
 		user.RefreshToken = &refreshToken
 		user.Effects = []models.Effect{}
 		user.Items = []models.Item{}
 		user.Rolls = [][]int{}
-		resultInsertionNumber, insertErr := userCollection.InsertOne(ctx, user)
+		_, insertErr := userCollection.InsertOne(ctx, user)
 		if insertErr != nil {
 			msg := fmt.Sprintf("User Details were not Saved")
 			c.JSON(http.StatusInternalServerError, gin.H{"error": msg})
 			return
 		}
 		defer cancel()
-		c.JSON(http.StatusOK, resultInsertionNumber)
+		var tokens Tokens
+		tokens.Token = token
+		tokens.RefreshToken = refreshToken
+		c.JSON(http.StatusOK, tokens)
 	}
-
 }
 
 func Login() gin.HandlerFunc {
@@ -111,13 +132,16 @@ func Login() gin.HandlerFunc {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
-		c.JSON(http.StatusOK, foundUser)
+		var tokens Tokens
+		tokens.Token = token
+		tokens.RefreshToken = refreshToken
+		c.JSON(http.StatusOK, tokens)
 	}
 }
 
 func Me() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		name := c.Param("name")
+		name := c.GetString("name")
 		var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
 		var user models.User
 		defer cancel()
@@ -126,6 +150,70 @@ func Me() gin.HandlerFunc {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
-		c.JSON(http.StatusOK, user)
+		var forMe ForMe
+		forMe.Username = user.Username
+		forMe.Avatar = user.AvatarUrl
+		forMe.Color = user.Color
+		forMe.Items = user.Items
+		forMe.Effects = user.Effects
+		c.JSON(http.StatusOK, forMe)
+	}
+}
+
+func Refresh() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		refresh := c.Request.Header.Get("refresh_token")
+		//fmt.Println(refresh)
+		claims, err, status := helper.ValidateToken(refresh)
+		fmt.Println(claims)
+		if err != "" {
+			c.JSON(status, gin.H{"error": "Invalid Refresh Token"})
+			return
+		}
+		token, refreshToken, _ := helper.GenerateToken(claims.Email, claims.Name, claims.Uid, claims.Role)
+		helper.UpdateAllTokens(token, refreshToken, claims.Name)
+		c.JSON(http.StatusOK, gin.H{"token": token, "refresh_token": refreshToken})
+	}
+}
+
+func ChangeAvatar() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// single file
+		file, _ := c.FormFile("file")
+		log.Println(file.Filename)
+		client := db_client.CreateClient()
+		collection := client.Client.Database("hpg").Collection("users")
+		var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
+		defer cancel()
+		avatarUrl := "/media/avatars/" + file.Filename
+		_, err := collection.UpdateOne(ctx, bson.M{"username": c.GetString("name")}, bson.M{"$set": bson.M{"avatar_url": avatarUrl}})
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+		// Upload the file to specific dst.
+		err = c.SaveUploadedFile(file, "media/avatars/"+file.Filename)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+	}
+}
+
+func ChangeColor() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		newColor, _ := c.GetPostForm("color")
+		fmt.Println(newColor)
+		client := db_client.CreateClient()
+		collection := client.Client.Database("hpg").Collection("users")
+		var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
+		_, err := collection.UpdateOne(ctx, bson.M{"username": c.GetString("name")}, bson.M{"$set": bson.M{"color": newColor}})
+		defer cancel()
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+
+		defer cancel()
 	}
 }

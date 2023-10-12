@@ -40,6 +40,6 @@ func Board() gin.HandlerFunc {
 		boardResponse.User = user
 
 		//unquoted, err := strconv.Unquote(string(data))
-		c.JSON(200, boardResponse)
+		c.JSON(c.GetInt("status"), boardResponse)
 	}
 }

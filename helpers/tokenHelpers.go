@@ -9,6 +9,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"hpg_backend_go/services/db_client"
 	"log"
+	"net/http"
 	"time"
 )
 
@@ -35,6 +36,10 @@ func GenerateToken(email, name, uid, role string) (string, string, error) {
 		},
 	}
 	refreshClaims := &SignedDetails{
+		Email: email,
+		Name:  name,
+		Uid:   uid,
+		Role:  role,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: time.Now().Local().Add(time.Hour * time.Duration(168)).Unix(),
 		},
@@ -48,7 +53,7 @@ func GenerateToken(email, name, uid, role string) (string, string, error) {
 	return token, refreshToken, nil
 }
 
-func ValidateToken(signedToken string) (claims *SignedDetails, msg string) {
+func ValidateToken(signedToken string) (claims *SignedDetails, msg string, status int) {
 	token, err := jwt.ParseWithClaims(
 		signedToken,
 		&SignedDetails{},
@@ -59,6 +64,7 @@ func ValidateToken(signedToken string) (claims *SignedDetails, msg string) {
 
 	if err != nil {
 		msg = err.Error()
+		status = http.StatusForbidden
 		return
 	}
 
@@ -66,15 +72,17 @@ func ValidateToken(signedToken string) (claims *SignedDetails, msg string) {
 	if !ok {
 		msg = fmt.Sprintf("the token is invalid")
 		msg = err.Error()
+		status = http.StatusForbidden
 		return
 	}
 
 	if claims.ExpiresAt < time.Now().Local().Unix() {
 		msg = fmt.Sprintf("token is expired")
 		msg = err.Error()
+		status = http.StatusForbidden
 		return
 	}
-	return claims, msg
+	return claims, msg, status
 }
 
 func UpdateAllTokens(signedToken string, signedRefreshToken string, username string) {

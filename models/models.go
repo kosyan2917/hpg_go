@@ -29,9 +29,12 @@ type User struct {
 	Rolls        [][]int            `json:"rolls"`
 	Points       int                `json:"points"`
 	Token        *string            `json:"token"`
-	RefreshToken *string            `json:"refreshToken"`
+	RefreshToken *string            `bson:"refresh_token" json:"refresh_token"`
 	Items        []Item             `json:"items"`
 	Effects      []Effect           `json:"effects"`
+	AvatarUrl    *string            `bson:"avatar_url" json:"avatar_url"`
+	Color        string             `json:"color"`
+	Position     int                `json:"position"`
 }
 
 type Item struct {

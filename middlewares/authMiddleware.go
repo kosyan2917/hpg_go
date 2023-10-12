@@ -16,9 +16,14 @@ func UserAuthenticate() gin.HandlerFunc {
 			return
 		}
 
-		claims, err := helper.ValidateToken(clientToken)
+		claims, err, status := helper.ValidateToken(clientToken)
+		if err == "token is expired" {
+			c.JSON(status, gin.H{"error": err})
+			c.Abort()
+			return
+		}
 		if err != "" {
-			c.JSON(http.StatusInternalServerError, gin.H{"error": err})
+			c.JSON(status, gin.H{"error": err})
 			c.Abort()
 			return
 		}
@@ -31,14 +36,15 @@ func UserAuthenticate() gin.HandlerFunc {
 func BoardAuth() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		clientToken := c.Request.Header.Get("token")
-		claims, err := helper.ValidateToken(clientToken)
-		fmt.Println(claims)
+		claims, err, _ := helper.ValidateToken(clientToken)
 		if err != "" {
 			c.Set("name", "guest")
 			c.Set("role", "GUEST")
+			c.Set("status", 403)
 		} else {
 			c.Set("name", claims.Name)
 			c.Set("role", claims.Role)
+			c.Set("status", 200)
 		}
 		c.Next()
 
