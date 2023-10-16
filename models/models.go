@@ -9,15 +9,17 @@ type Board struct {
 }
 
 type Field struct {
-	Name     *string   `bson:"name" json:"name"`
-	Low      *int      `bson:"low" json:"low"`
-	High     *int      `bson:"high" json:"high"`
-	Tags     *[]string `bson:"tags" json:"tags"`
-	ImageUrl *string   `bson:"image" json:"imageUrl"`
-	Points   *int      `bson:"points" json:"points"`
-	Id       *int      `bson:"id" json:"id"`
-	Games    *[]string `bson:"games" json:"games"`
-	Rating   *string   `bson:"rating" json:"rating"`
+	Name      *string   `bson:"name" json:"name"`
+	Low       *int      `bson:"low" json:"low"`
+	High      *int      `bson:"high" json:"high"`
+	Tags      *[]string `bson:"tags" json:"tags"`
+	ImageUrl  *string   `bson:"image" json:"imageUrl"`
+	Points    *int      `bson:"points" json:"points"`
+	Id        *int      `bson:"id" json:"id"`
+	Games     *[]string `bson:"games" json:"games"`
+	Rating    *string   `bson:"rating" json:"rating"`
+	Condition *string   `bson:"condition" json:"condition"`
+	Type      *string   `bson:"type" json:"type"`
 }
 
 type User struct {
@@ -35,6 +37,8 @@ type User struct {
 	AvatarUrl    *string            `bson:"avatar_url" json:"avatar_url"`
 	Color        string             `json:"color"`
 	Position     int                `json:"position"`
+	CurrentGame  string             `bson:"current_game" json:"current_game"`
+	CanRoll      bool               `bson:"can_roll" json:"can_roll"`
 }
 
 type Item struct {

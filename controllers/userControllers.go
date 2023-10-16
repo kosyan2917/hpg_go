@@ -21,11 +21,12 @@ type Tokens struct {
 }
 
 type ForMe struct {
-	Username string          `json:"username"`
-	Avatar   *string         `json:"avatar"`
-	Color    string          `json:"color"`
-	Items    []models.Item   `json:"items"`
-	Effects  []models.Effect `json:"effects"`
+	Username    string          `json:"username"`
+	Avatar      *string         `json:"avatar"`
+	Color       string          `json:"color"`
+	CurrentGame string          `json:"current_game"`
+	Items       []models.Item   `json:"items"`
+	Effects     []models.Effect `json:"effects"`
 }
 
 type Color struct {
@@ -57,6 +58,7 @@ func Signup() gin.HandlerFunc {
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "error detected while fetching the email"})
 			log.Panic(err)
+			return
 		}
 
 		password, err := helper.HashPassword(user.Password)
@@ -75,6 +77,7 @@ func Signup() gin.HandlerFunc {
 		user.ID = primitive.NewObjectID()
 		user.Role = "PLAYER"
 		user.Position = 1
+		user.CanRoll = true
 		token, refreshToken, _ := helper.GenerateToken(user.Email, user.Username, user.ID.Hex(), user.Role)
 		user.Token = &token
 		user.Color = "#000000"
@@ -123,6 +126,7 @@ func Login() gin.HandlerFunc {
 
 		if foundUser.Email == "" {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "user not found"})
+			return
 		}
 		token, refreshToken, _ := helper.GenerateToken(foundUser.Email, foundUser.Username, foundUser.ID.Hex(), foundUser.Role)
 		helper.UpdateAllTokens(token, refreshToken, foundUser.Username)
@@ -151,11 +155,13 @@ func Me() gin.HandlerFunc {
 			return
 		}
 		var forMe ForMe
+		fmt.Println(user)
 		forMe.Username = user.Username
 		forMe.Avatar = user.AvatarUrl
 		forMe.Color = user.Color
 		forMe.Items = user.Items
 		forMe.Effects = user.Effects
+		forMe.CurrentGame = user.CurrentGame
 		c.JSON(http.StatusOK, forMe)
 	}
 }

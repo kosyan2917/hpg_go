@@ -1,0 +1,467 @@
+[{
+  "_id": {
+    "$oid": "650af77ad974db51e978563c"
+  },
+  "fields": [
+    {
+      "name": "Старт",
+      "image": "1.png",
+      "id": 1,
+      "type": "program"
+    },
+    {
+      "name": "Разогревочная",
+      "low": 2,
+      "high": 7,
+      "tags": [
+        "Shooter"
+      ],
+      "image": "2.png",
+      "points": 1,
+      "id": 2,
+      "type": "common"
+    },
+    {
+      "name": "Подлянка/Кайфарик",
+      "image": "3.png",
+      "points": 1,
+      "id": 3,
+      "type": "program"
+    },
+    {
+      "name": "Движ",
+      "low": 5,
+      "high": 10,
+      "tags": [
+        "Action"
+      ],
+      "image": "4.png",
+      "points": 1,
+      "id": 4,
+        "type": "common"
+    },
+    {
+      "name": "Кчау",
+      "low": 3,
+      "high": 100,
+      "tags": [
+        "Racing"
+      ],
+      "image": "5.png",
+      "points": 1,
+      "id": 5,
+      "type": "common"
+    },
+    {
+      "name": "Ахуй 1",
+      "low": 4,
+      "high": 8,
+      "tags": [
+        "Anime",
+        "Indie",
+        "Puzzle",
+        "Rogue-like"
+      ],
+      "image": "6.png",
+      "points": 1,
+      "id": 6,
+      "type": "common"
+    },
+    {
+      "name": "На чилле, на расслабоне",
+      "low": 0,
+      "high": 300,
+      "tags": [
+        "Casual"
+      ],
+      "image": "7.png",
+      "points": 1,
+      "id": 7,
+      "type": "common"
+    },
+    {
+      "name": "Удар Макаки 4",
+      "games": [
+        "helltaker",
+        "plants vs zombies",
+        "metal: hellsinger",
+        "portal",
+        "ruiner",
+        "firewatch",
+        "limbo",
+        "superhot",
+        "stray",
+        "journey",
+        "VVVVVV",
+        "The Pedestrain"
+      ],
+      "image": "8.png",
+      "points": 1,
+      "id": 8,
+      "type": "common"
+    },
+    {
+      "name": "Шанс",
+      "image": "9.png",
+      "points": 1,
+      "id": 9,
+      "type": "program"
+    },
+    {
+      "name": "Для умов выше среднего",
+      "low": 4,
+      "high": 8,
+      "tags": [
+        "Point & Click",
+        "Point-and-click"
+      ],
+      "image": "10.png",
+      "points": 1,
+      "id": 10,
+      "type": "common"
+    },
+    {
+      "name": "Тюрьма",
+      "image": "11.png",
+      "id": 11,
+      "type": "program"
+    },
+    {
+      "name": "Привет, люстры",
+      "low": 2,
+      "high": 9,
+      "tags": [
+        "Platformer",
+        "3D Platformer"
+      ],
+      "image": "12.png",
+      "points": 2,
+      "id": 12,
+      "type": "common"
+    },
+    {
+      "name": "Подлянка/Кайфарик",
+      "image": "13.png",
+      "points": 2,
+      "id": 13,
+      "type": "program"
+    },
+    {
+      "name": "Срать вечно",
+      "low": 5,
+      "high": 13,
+      "tags": [
+        "Psychological Horror"
+      ],
+      "image": "14.png",
+      "points": 2,
+      "id": 14,
+      "type": "common"
+    },
+    {
+      "name": "Защита диплома",
+      "low": 3,
+      "high": 10,
+      "tags": [
+        "Tower Defence"
+      ],
+      "image": "15.png",
+      "points": 2,
+      "id": 15,
+      "type": "common"
+    },
+    {
+      "name": "Ахуй 2",
+      "low": 4,
+      "high": 10,
+      "tags": [
+        "RPG",
+        "JRPG",
+        "1980s",
+        "1990's"
+      ],
+      "image": "16.png",
+      "points": 2,
+      "id": 16,
+      "type": "common"
+    },
+    {
+      "name": "Библиотека",
+      "condition": "Игры из библиотеки steam",
+      "image": "17.png",
+      "points": 2,
+      "id": 17,
+      "type": "common"
+    },
+    {
+      "name": "Я тут притаился",
+      "low": 7,
+      "high": 300,
+      "tags": [
+        "Stealth"
+      ],
+      "image": "18.png",
+      "points": 2,
+      "id": 18,
+      "type": "common"
+    },
+    {
+      "name": "Шанс",
+      "image": "19.png",
+      "points": 2,
+      "id": 19,
+      "type": "program"
+    },
+    {
+      "name": "Заблудэльный",
+      "low": 2,
+      "high": 8,
+      "tags": [
+        "Metroidvania"
+      ],
+      "image": "20.png",
+      "points": 2,
+      "id": 20,
+      "type": "common"
+    },
+    {
+      "name": "Игры ото всех всех",
+      "image": "21.png",
+      "points": 2,
+      "id": 21,
+      "type": "program"
+    },
+    {
+      "name": "UwUНяяяяяяяяяяя",
+      "low": 7,
+      "high": 15,
+      "tags": [
+        "Anime"
+      ],
+      "image": "22.png",
+      "points": 3,
+      "type": "common",
+      "id": 22
+    },
+    {
+      "name": "Подлянка/Кайфарик",
+      "image": "23.png",
+      "points": 3,
+      "id": 23,
+      "type": "program"
+    },
+    {
+      "name": "Индюшатина",
+      "low": 0,
+      "high": 300,
+      "tags": [
+        "Indie"
+      ],
+      "image": "24.png",
+      "points": 3,
+      "id": 24,
+      "type": "common"
+    },
+    {
+      "name": "Увышка",
+      "games": [
+        "Scorn",
+        "Castlevania: Lords of Shadow",
+        "Vangers",
+        "Outer Wilds",
+        "ENDER LILIES: Quuietus of the Knights",
+        "Outlast",
+        "Outlast 2",
+        "Serious Sam 2",
+        "Watch dogs 2",
+        "Cruetly Squad",
+        "Far Cry 5"
+      ],
+      "image": "25.png",
+      "points": 3,
+      "type": "common",
+      "id": 25
+    },
+    {
+      "name": "Ахуй 3",
+      "low": 4,
+      "high": 13,
+      "tags": [
+        "Shooter",
+        "Action",
+        "Racing",
+        "Casual",
+        "Point & Click"
+      ],
+      "image": "26.png",
+      "points": 3,
+      "id": 26,
+      "type": "common"
+    },
+    {
+      "name": "Тупо топ",
+      "low": 0,
+      "high": 15,
+      "rating": ">80",
+      "image": "27.png",
+      "points": 3,
+      "id": 27,
+      "type": "common"
+    },
+    {
+      "name": "#Думайте",
+      "low": 4,
+      "high": 300,
+      "tags": [
+        "Puzzle"
+      ],
+      "image": "28.png",
+      "points": 3,
+      "id": 28,
+      "type": "common"
+    },
+    {
+      "name": "Шанс",
+      "image": "29.png",
+      "points": 3,
+      "id": 29,
+      "type": "program"
+    },
+    {
+      "name": "День сурка",
+      "low": 2,
+      "high": 10,
+      "tags": [
+        "Rogue-like"
+      ],
+      "image": "30.png",
+      "points": 3,
+      "id": 30,
+      "type": "common"
+    },
+    {
+      "name": "Пресетики",
+      "image": "31.png",
+      "points": 2,
+      "id": 31,
+      "type": "program"
+
+    },
+    {
+      "name": "РПГ В ХПГ",
+      "low": 10,
+      "high": 20,
+      "tags": [
+        "rpg"
+      ],
+      "image": "32.png",
+      "points": 4,
+      "id": 32,
+      "type": "common"
+    },
+    {
+      "name": "Подлянка/Кайфарик",
+      "image": "33.png",
+      "points": 4,
+      "id": 33,
+      "type": "program"
+    },
+    {
+      "name": "Final Fantasy 69",
+      "low": 10,
+      "high": 300,
+      "tags": [
+        "jrpg"
+      ],
+      "image": "34.png",
+      "points": 4,
+      "id": 34,
+      "type": "common"
+    },
+    {
+      "name": "Олдскулы свело",
+      "low": 0,
+      "high": 20,
+      "tags": [
+        "1990",
+        "1980"
+      ],
+      "image": "35.png",
+      "points": 4,
+      "id": 35,
+      "type": "common"
+    },
+    {
+      "name": "Ахуй 4",
+      "low": 10,
+      "high": 18,
+      "tags": [
+        "Platformer",
+        "3D Platformer",
+        "Metroidvania",
+        "Psychological Horror",
+        "Stealth",
+        "Tower Defence"
+      ],
+      "image": "36.png",
+      "points": 4,
+      "id": 36,
+      "type": "common"
+    },
+    {
+      "name": "1000 АПМ",
+      "low": 5,
+      "high": 15,
+      "tags": [
+        "RTS"
+      ],
+      "image": "37.png",
+      "points": 4,
+      "id": 37,
+      "type": "common"
+    },
+    {
+      "name": "Сосалики",
+      "games": [
+        "Dark Souls",
+        "Dark Souls 2",
+        "Dark Souls 3",
+        "Sekiro",
+        "ELDEN RING",
+        "Star Wars Jedi: Fallen Order",
+        "CODE VEIN",
+        "Mortal Shell",
+        "Lords of the fallen",
+        "Darksiders 3",
+        "Blasphemous",
+        "Hollow knight",
+        "Salt and Sanctuary",
+        "Remnant: From the Ashes"
+      ],
+      "image": "38.png",
+      "points": 4,
+      "id": 38,
+      "type": "common"
+    },
+    {
+      "name": "Шанс",
+      "image": "39.png",
+      "points": 4,
+      "id": 39,
+      "type": "program"
+    },
+    {
+      "name": "Да как не попал то сука",
+      "low": 14,
+      "high": 300,
+      "tags": [
+        "Turn-Based Strategy"
+      ],
+      "image": "40.png",
+      "points": 4,
+      "id": 40,
+      "type": "common"
+    }
+  ],
+  "title": "Standart board"
+}]
