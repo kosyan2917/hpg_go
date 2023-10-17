@@ -33,6 +33,7 @@ func Move(username string, dice1 int, dice2 int) (newPos int, err error) {
 	if newPos > 40 {
 		newPos = newPos - 40
 	}
+	//newPos = 1 //Строка для тестирования, удалить
 	update := bson.D{{"$set", bson.D{{"position", newPos}}}}
 	_, err = collection.UpdateOne(context.TODO(), filter, update)
 	return newPos, err
