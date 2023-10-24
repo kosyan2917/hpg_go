@@ -103,14 +103,6 @@ func Roll() gin.HandlerFunc {
 				c.JSON(500, gin.H{"error": err.Error()})
 				return
 			}
-			if canRoll {
-				update := bson.D{{"$set", bson.D{{"can_roll", true}}}}
-				_, err = collection.UpdateOne(nil, filter, update)
-				if err != nil {
-					c.JSON(500, gin.H{"error": err.Error()})
-					return
-				}
-			}
 		}
 		if err != nil {
 			c.JSON(500, gin.H{"error": err.Error()})

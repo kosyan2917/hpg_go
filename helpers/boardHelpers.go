@@ -30,6 +30,7 @@ func Move(username string, dice1 int, dice2 int) (newPos int, err error) {
 	}
 
 	newPos = pos.Pos + dice1 + dice2
+	newPos = 1 // Строка для тестирования, удалить!
 	if newPos > 40 {
 		newPos = newPos - 40
 	}
